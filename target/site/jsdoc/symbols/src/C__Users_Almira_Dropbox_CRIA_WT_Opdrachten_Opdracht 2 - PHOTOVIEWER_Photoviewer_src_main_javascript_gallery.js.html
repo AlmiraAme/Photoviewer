@@ -1,0 +1,647 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * In deze array zitten alle foto's in (en alle bijbehoorende informatie).
+<span class='line'>  3</span>  * @type {Array}
+<span class='line'>  4</span>  */</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">album</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="WHIT">    </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>  7</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0006787.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image1'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'containers'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Sander'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'9/8/1999'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004713.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image2'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'bike in amsterdam'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Brian'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'12/10/2009'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004720.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image3'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'desert'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Frits'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'1/15/1999'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004731.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image4'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'chineze man'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Sindy'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'7/9/2000'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004750.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image5'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'construction'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Almira'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'8/15/2013'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004755.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image6'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'family on beach'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Paul'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'6/9/2012'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004801.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image7'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'old woman'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Lieke'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'5/1/2003'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004802.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image8'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Little boy'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Tristan'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'11/28/2008'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004827.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image9'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'old couple with bikes'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Roos'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'12/20/2006'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004853.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image10'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'bridge'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Hans'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'10/16/2007'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004858.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image11'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'tale'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Elko'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'9/14/2013'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004860.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image12'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'beach'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Ben'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'8/11/2005'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004870.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image13'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'locomotive'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Adam'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'6/18/1989'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004874.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image14'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'walk in the park'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Damian'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'5/21/1988'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004888.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image15'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'surgery'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Gils'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'11/22/1979'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004902.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image16'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'grandma and grandpa'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Lars'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'10/23/1995'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004931.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image17'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'london bridge'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'veronica'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'9/29/1992'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004969.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image18'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'satalite'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Ken'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'7/27/1996'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004971.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image19'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'water'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Manuel'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'1/19/1993'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0006598.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image20'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'church'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Chris'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'7/17/1991'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0006630.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image21'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Great summer'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Micky'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'6/8/1990'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0006638.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image22'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'castle'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Rachel'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'5/3/1998'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0006680.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image23'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'red sand'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Pipo'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'6/13/1987'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0006743.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image24'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'jail'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Melisa'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'1/26/2023'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'images/0004681.jpg'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">            </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'image25'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">            </span><span class="NAME">alt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'shadow palm tree'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">            </span><span class="NAME">landscape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">            </span><span class="NAME">photographer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Tim'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">            </span><span class="NAME">date</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="STRN">'12/3/2010'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">    </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="COMM">/**
+<span class='line'>209</span>  * Het aantal foto's/divs in de container.
+<span class='line'>210</span>  * @type {Number}
+<span class='line'>211</span>  */</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">numberOfImages</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">album.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="COMM">/**
+<span class='line'>214</span>  *  Maximale breedte van een div
+<span class='line'>215</span>  * @type {Number}
+<span class='line'>216</span>  */</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">MAX_WIDTH</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="COMM">/**
+<span class='line'>219</span>  * Rechter muis klik code.
+<span class='line'>220</span>  * @type {Number}
+<span class='line'>221</span>  */</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">RIGHT_CLICK</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="COMM">/**
+<span class='line'>224</span>  * Linker muis klik code.
+<span class='line'>225</span>  * @type {Number}
+<span class='line'>226</span>  */</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LEFT_CLICK</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="COMM">/**
+<span class='line'>229</span>  * Spatie keycode.
+<span class='line'>230</span>  * @type {Number}
+<span class='line'>231</span>  */</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">SPACE_KEY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">32</span><span class="WHIT"> </span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="COMM">/**
+<span class='line'>234</span>  * Linker pijltje keycode.
+<span class='line'>235</span>  * @type {Number}
+<span class='line'>236</span>  */</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LEFTARROW_KEY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">37</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="COMM">/**
+<span class='line'>239</span>  * Rechter pijltje keycode.
+<span class='line'>240</span>  * @type {Number}
+<span class='line'>241</span>  */</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">RIGHTARROW_KEY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">39</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="COMM">/**
+<span class='line'>244</span>  * Geeft boolean of hij ingezoomed is of niet/
+<span class='line'>245</span>  * @type {Boolean}
+<span class='line'>246</span>  */</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">zoomedIn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="COMM">/**
+<span class='line'>249</span>  * Geeft de id weer van het huidige image waar je op hebt geklikt of gezoomt op hebt.
+<span class='line'>250</span>  * @type {String}
+<span class='line'>251</span>  */</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">imageId</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">album</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">id</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="COMM">/**
+<span class='line'>254</span>  * De volgende image.
+<span class='line'>255</span>  */</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">nextImage</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="COMM">/**
+<span class='line'>258</span>  * De vorige image.
+<span class='line'>259</span>  */</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">previousImage</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> 
+<span class='line'>262</span> </span><span class="COMM">/**
+<span class='line'>263</span>  * Hier wordt de oncontext menu default uitgezet door een false boolean te returnen.
+<span class='line'>264</span>  *
+<span class='line'>265</span>  * @return {Boolean} false zodat de default waarde op false word gezet.
+<span class='line'>266</span>  */</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="NAME">document.oncontextmenu</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>268</span> 
+<span class='line'>269</span> </span><span class="COMM">/**
+<span class='line'>270</span>  * Hier wordt nadat je een key indrukt een functie KeyDownZoom opgeroepen en uitgevoerd.
+<span class='line'>271</span>  *
+<span class='line'>272</span>  * Hiervoor heb ik het javascriptboek 2editie geraadpleegd: the Dom Event object blz: 375
+<span class='line'>273</span>  * @param e : Het event dat wordt meegegeven.
+<span class='line'>274</span>  */</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="NAME">document.onkeydown</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">keyDownZoom</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>276</span> 
+<span class='line'>277</span> </span><span class="COMM">/**
+<span class='line'>278</span>  * Deze functie is bedoelt om een pagina te vullen met alle images.
+<span class='line'>279</span>  * Eerst wordt een container gemaakt en in de body gezet.
+<span class='line'>280</span>  * Daarna word de functie createGallery opgeroepen waarbij je de container mee geeft en de maximale breedte van een div.
+<span class='line'>281</span>  */</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">fillPage</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">createAndAddContainer</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">widthDiv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">setWidthDiv</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">    </span><span class="NAME">createGallery</span><span class="PUNC">(</span><span class="NAME">widthDiv</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">container</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>287</span> 
+<span class='line'>288</span> </span><span class="COMM">/**
+<span class='line'>289</span>  * Hier wordt berekend hoe de grid/widt moet zijn van de divs.
+<span class='line'>290</span>  * Ik heb voor deze berekening gekozen omdat:
+<span class='line'>291</span>  * - Je een liquid div maakt en je makkelijk de breedte kan berekenen naarmaten je div's verwijdert.
+<span class='line'>292</span>  * De breedte van de div's zijn in procenten.
+<span class='line'>293</span>  * De berekenening: eerst wordt de wortel getrokken van het aantal foto's/divs die je hebt.
+<span class='line'>294</span>  *                  daarna wordt dat cijfer naar boven afgerond.
+<span class='line'>295</span>  *                  En als laatst wordt de 100 (max_width) gedeeldt door en afgronde cijfer.
+<span class='line'>296</span>  * @return {String}: Geeft het aantal procent terug dat een div width moet hebben.
+<span class='line'>297</span>  */</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setWidthDiv</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">MAX_WIDTH</span><span class="PUNC">/</span><span class="PUNC">(</span><span class="NAME">Math.ceil</span><span class="PUNC">(</span><span class="NAME">Math.sqrt</span><span class="PUNC">(</span><span class="NAME">numberOfImages</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">'%'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>301</span> 
+<span class='line'>302</span> </span><span class="COMM">/**
+<span class='line'>303</span>  * Hier wordt de gallarij gecreeërt.
+<span class='line'>304</span>  * Er wordt een loop gemaakt voor het aantal foto's die er zijn en wordt in de container gevuld.
+<span class='line'>305</span>  * Eerst wordt er een div gemaakt waar je de div.width in set zodat het mooi gerasterd zal worden.
+<span class='line'>306</span>  * Dan wordt er een image gecreeërt door de functie createImage waarbij je de image meegeeft.
+<span class='line'>307</span>  * Daarna zet je de image in de div en de div in de container.
+<span class='line'>308</span>  * @param widthDiv : De breedte dat elk div moet hebben.
+<span class='line'>309</span>  * @param container : De container waar je de div's (met de images erin) in zet.
+<span class='line'>310</span>  */</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createGallery</span><span class="PUNC">(</span><span class="NAME">widthDiv</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">container</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">numberOfImages</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">div</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createElement</span><span class="PUNC">(</span><span class="STRN">'div'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">        </span><span class="NAME">div.style.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">widthDiv</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">img</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">createImage</span><span class="PUNC">(</span><span class="NAME">album</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">        </span><span class="NAME">div.appendChild</span><span class="PUNC">(</span><span class="NAME">img</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">        </span><span class="NAME">container.appendChild</span><span class="PUNC">(</span><span class="NAME">div</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>320</span> 
+<span class='line'>321</span> </span><span class="COMM">/**
+<span class='line'>322</span>  * Hier wordt een container gecreeërt en in de body gezet.
+<span class='line'>323</span>  * Eerst wordt een element div gemaakt met als id container.
+<span class='line'>324</span>  * Hij zet de container in de body en returnt deze zodat indien je er meerdere wil maken dit mogenlijk is.
+<span class='line'>325</span>  * @return {HTMLElement} : Geeft een div html element terug met als id container.
+<span class='line'>326</span>  */</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createAndAddContainer</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createElement</span><span class="PUNC">(</span><span class="STRN">'div'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">    </span><span class="NAME">container.id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'container'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">    </span><span class="NAME">document.body.appendChild</span><span class="PUNC">(</span><span class="NAME">container</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">container</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>333</span> 
+<span class='line'>334</span> </span><span class="COMM">/**
+<span class='line'>335</span>  * Hier wordt een image(img) element gecreeërt nadat je als parameter een image meegeeft.
+<span class='line'>336</span>  * Als eerst wordt er een element gecreeërt voor de foto/image.
+<span class='line'>337</span>  * Daarna worden de waardes/attributes geset voor het element(de url wordt de src, en hij neem de id, date en photopgrapher over)
+<span class='line'>338</span>  * Wanneer je op een image klik wordt er een event opgeroepen en daarin de functie mouseDown.
+<span class='line'>339</span>  * Voor de functie mouseDown geeft je de event door en de image zelf(this).
+<span class='line'>340</span>  * De reden dat ik de onmousedown hier heb bijgezet is omdat de functie alleen mag worden opgeroepen voor de image.
+<span class='line'>341</span>  * @param image : De image die je meegeeft uit de album.
+<span class='line'>342</span>  * @return {HTMLElement}: Geeft een img html element terug met de bijbehorende attributes.
+<span class='line'>343</span>  */</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createImage</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">img</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createElement</span><span class="PUNC">(</span><span class="STRN">'img'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">    </span><span class="NAME">img.src</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.url</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">    </span><span class="NAME">img.id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.id</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">    </span><span class="NAME">img.alt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.alt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">    </span><span class="NAME">img.date</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.date</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">    </span><span class="NAME">img.photographer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.photographer</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">    </span><span class="NAME">img.onmousedown</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="NAME">mouseDown</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">img</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>354</span> 
+<span class='line'>355</span> </span><span class="COMM">/**
+<span class='line'>356</span>  * Set de width van alle divs die in de container zitten.
+<span class='line'>357</span>  * Eerst wordt de numberOfImages geset, hierbij wordt het aantal div's in de container berekend en meegegeven.
+<span class='line'>358</span>  * Daarna komt er een loop voor het aantal images/divs in de container en wordt voor elke child element de width geset.
+<span class='line'>359</span>  * Ik heb hiervoor gekozen omdat dit uitgevoert moet worden nadat er een foto of foto's worden verwijdert.
+<span class='line'>360</span>  * Dit is ook makkelijk te herbruiken in het geval je de raster wil veranderen.
+<span class='line'>361</span>  *
+<span class='line'>362</span>  * Hiervoor heb ik de javascript book 2edition geraadpleegd --> Node Relationships blz 264.
+<span class='line'>363</span>  * @param container : De container waar alle div's zitten (met de images erin).
+<span class='line'>364</span>  */</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setWidthDivs</span><span class="PUNC">(</span><span class="NAME">container</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">    </span><span class="NAME">numberOfImages</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">container.childElementCount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">numberOfImages</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">        </span><span class="NAME">container.childNodes.item</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">style.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">setWidthDiv</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>371</span> 
+<span class='line'>372</span> </span><span class="COMM">/**
+<span class='line'>373</span>  * Met deze functie kun je een image verwijderen uit de photoviewer(container).
+<span class='line'>374</span>  * Eerst wordt de next image geset in het geval je op de spatie drukt om de image in te zoomen,
+<span class='line'>375</span>  * de zoom gaat op deze manier meteen naar de volgende foto. De nextimage en previous (door de functie setVariablesForImages) van de image wordt als eerst geset omdat erna de image wordt verwijdert uit de container.
+<span class='line'>376</span>  * Daarna wordt een variable aangemaakt om de div van de image die je hebt meegegeven in te zetten.
+<span class='line'>377</span>  * Dan wordt een variable aangemaakt voor de container (deze wordt opgehaald en opgeslagen in de container).
+<span class='line'>378</span>  * Daarna wordt de div uit de container verwijdert.
+<span class='line'>379</span>  * De imageId wordt geset naar de nextImage.id (omdat image niet meer bestaat in de container) in het geval er op een spatie wordt gedrukt om een image in te zoomen.
+<span class='line'>380</span>  * @param image : De image die verwijdert moet worden uit de container.
+<span class='line'>381</span>  * @return {HTMLElement} : De container nadat de image is verwijdert.
+<span class='line'>382</span>  */</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">removeDivFromContainer</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">    </span><span class="NAME">setVariablesForImages</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">div</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">image.id</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">parentNode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>386</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">'container'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">    </span><span class="NAME">container.removeChild</span><span class="PUNC">(</span><span class="NAME">div</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">    </span><span class="NAME">imageId</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nextImage.id</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">container</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>391</span> 
+<span class='line'>392</span> </span><span class="COMM">/**
+<span class='line'>393</span>  * De functie mouseDown geeft weer wat er moet gebeuren nadat je op de muis klikt.
+<span class='line'>394</span>  * Eerst wordt de default verwijdert zodat je hier geen last van hebt in de browsers.
+<span class='line'>395</span>  * Daarna wordt er gekeken of het event property gelijk is aan de rechter muisklik code.
+<span class='line'>396</span>  * In het geval dit zo is wordt de image die meeggeven is verwijdert en een nieuwe container gemaakt.
+<span class='line'>397</span>  * Dan wordt de with van alle divs geset van de container.
+<span class='line'>398</span>  * In het geval de event property gelijk is aan de linker muisklik wordt de functie zoomIn opgeroepen en de parameter image wordt meegegeven.
+<span class='line'>399</span>  * @param e : Het event dat wordt meegegeven.
+<span class='line'>400</span>  * @param image : De image die wordt meegegeven.
+<span class='line'>401</span>  */</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">mouseDown</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">image</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">    </span><span class="NAME">deleteDefault</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.which</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">RIGHT_CLICK</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">removeDivFromContainer</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">        </span><span class="NAME">setWidthDivs</span><span class="PUNC">(</span><span class="NAME">container</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">    </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">e.which</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">LEFT_CLICK</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">        </span><span class="NAME">zoomIn</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>412</span> 
+<span class='line'>413</span> </span><span class="COMM">/**
+<span class='line'>414</span>  * Hier verwijder je de default van een event.
+<span class='line'>415</span>  *
+<span class='line'>416</span>  * Hiervoor heb ik de javascript book 2edition geraadpleegd --> Cross-Browser Event object blz 381.
+<span class='line'>417</span>  * @param e : Het event dat wordt meegegven.
+<span class='line'>418</span>  */</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">deleteDefault</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">    </span><span class="NAME">e.preventDefault</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">   </span><span class="COMM">//event.returnValue = false;</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>423</span> 
+<span class='line'>424</span> </span><span class="COMM">/**
+<span class='line'>425</span>  * De functie spaceKey is in het geval je op de spatie drukt.
+<span class='line'>426</span>  * Wanneer de event property gelijk is aan de keycode van de spatie wordt er eerst gekeken of hij al in zoom mood is.
+<span class='line'>427</span>  * Indien de foto niet is ingezoomed voert hij de zoomIn functie en geeft de image van de elementbyid imageId mee
+<span class='line'>428</span>  * Wanneer een foto niet is ingezoomed voert hij de zoomUit functie.
+<span class='line'>429</span>  * @param e : De event die wordt meegegeven.
+<span class='line'>430</span>  */</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">spaceKey</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.keyCode</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">SPACE_KEY</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">zoomedIn</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">            </span><span class="NAME">zoomIn</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">imageId</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">            </span><span class="NAME">zoomOut</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>441</span> 
+<span class='line'>442</span> </span><span class="COMM">/**
+<span class='line'>443</span>  * De functie rightArrowKey is in het geval je de rechter pijl drukt om de volgende image te zien.
+<span class='line'>444</span>  * Wanneer de event property gelijk is aan de keycode van de rechterpijl wordt er eerst gekeken of hij al in de zoom mode is.
+<span class='line'>445</span>  * Dit om veilig te zijn zodat hij het alleen uitvoert in de zoom mode.
+<span class='line'>446</span>  * Daarna wordt eerst de popup verwijdert, om de oude image te verwijderen en de nieuwe in te zetten, dit gebeurt door filmZoom met als meegegeven parameter nextImage (een image).
+<span class='line'>447</span>  * @param e : De event die wordt meegegeven.
+<span class='line'>448</span>  */</span><span class="WHIT">
+<span class='line'>449</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">rightArrowKey</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>450</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.keyCode</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">RIGHTARROW_KEY</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>451</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">zoomedIn</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>452</span> </span><span class="WHIT">            </span><span class="NAME">document.body.removeChild</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">'popup'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>453</span> </span><span class="WHIT">            </span><span class="NAME">fillZoom</span><span class="PUNC">(</span><span class="NAME">nextImage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>456</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>457</span> 
+<span class='line'>458</span> </span><span class="COMM">/**
+<span class='line'>459</span>  * De functie leftArrowKey is in het geval je de linker pijl drukt om de vorige image te zien.
+<span class='line'>460</span>  * Wanneer de event property gelijk is aan de keycode van de linkerpijl wordt er eerst gekeken of hij al in de zoom mode is.
+<span class='line'>461</span>  * Dit om veilig te zijn zodat hij het alleen uitvoert in de zoom mode.
+<span class='line'>462</span>  * Daarna wordt eerst de popup verwijdert,om  de oude image te verwijderen en de nieuwe in te zetten, dit gebeurt door filmZoom met als meegegeven parameter previousImage (een image).
+<span class='line'>463</span>  * @param e : De event die wordt meegegeven.
+<span class='line'>464</span>  */</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">leftArrowKey</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.keyCode</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">LEFTARROW_KEY</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>467</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">zoomedIn</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>468</span> </span><span class="WHIT">            </span><span class="NAME">document.body.removeChild</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">'popup'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>469</span> </span><span class="WHIT">            </span><span class="NAME">fillZoom</span><span class="PUNC">(</span><span class="NAME">previousImage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>473</span> 
+<span class='line'>474</span> </span><span class="COMM">/**
+<span class='line'>475</span>  * Hier is de functie keyDownZoom die wordt opgeroepen tijdens het onkeydown event.
+<span class='line'>476</span>  * Hij reset eerst de default waardes. Daarna kijkt hij welke key wordt uitgevoert en indien dit zo is wordt de functie ook echt uitgevoert.
+<span class='line'>477</span>  * @param e
+<span class='line'>478</span>  */</span><span class="WHIT">
+<span class='line'>479</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">keyDownZoom</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">    </span><span class="NAME">deleteDefault</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>481</span> </span><span class="WHIT">    </span><span class="NAME">spaceKey</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>482</span> </span><span class="WHIT">    </span><span class="NAME">rightArrowKey</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">    </span><span class="NAME">leftArrowKey</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>485</span> 
+<span class='line'>486</span> </span><span class="COMM">/**
+<span class='line'>487</span>  * De createPopup is een functie die een popup div creeërt en dit returnt. Deze functie is vaker te gebruiken vooral als je naar een volgende of vorige foto wil.
+<span class='line'>488</span>  * Eerst wordt er een element gecreeërt met de id en classname(voor de stylesheet) popup.
+<span class='line'>489</span>  * Aan deze popup wordt er een onclick event toegevoegt, dit in het geval je uit wil zoomen. Daarom wordt er voor dit event de functie zoomOut ook opgeroepen.
+<span class='line'>490</span>  * @return {HTMLElement}  : Geeft een div html element terug met als id popup.
+<span class='line'>491</span>  */</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createPopup</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">popupDiv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createElement</span><span class="PUNC">(</span><span class="STRN">'div'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">    </span><span class="NAME">popupDiv.className</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'popup'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">    </span><span class="NAME">popupDiv.id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'popup'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">    </span><span class="NAME">popupDiv.onclick</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">zoomOut</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">popupDiv</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>499</span> 
+<span class='line'>500</span> </span><span class="COMM">/**
+<span class='line'>501</span>  * De functie getSizeOriginalImage is in het geval je de width en/of height wil hebben van de originele image uit de album.
+<span class='line'>502</span>  * Je kunt ook meerde attributes krijgen van een orginele image.
+<span class='line'>503</span>  * Ik heb deze functie gemaakt omdat het makkelijk is om informatie/attributes te krijgen van de image, je kunt hier makkelijk de photograaf, date, url etc.
+<span class='line'>504</span>  * @param imageId : De image id van de image waar je de waardes van wil
+<span class='line'>505</span>  * @param input : Height of width maar je kunt hiervoor meerdere attributes van een image krijgen. Het is een string voor het geval je een attribut wil ophalen.
+<span class='line'>506</span>  * @return {*} : De return waarde hangt af van de input ( de waarde die je opvraagt).
+<span class='line'>507</span>  */</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getSizeOriginalImage</span><span class="PUNC">(</span><span class="NAME">imageId</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">input</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>509</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">imageAttribute</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">numberOfImages</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">album</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">id</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">imageId</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">            </span><span class="NAME">imageAttribute</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">album</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">input</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">imageAttribute</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>517</span> 
+<span class='line'>518</span> </span><span class="COMM">/**
+<span class='line'>519</span>  * Hier is een functie waarbij je zowel de previous als de next image gelijk set.
+<span class='line'>520</span>  * @param image : De image die wordt meegeven waarbij je de volgende en vorige foto voor moet setten.
+<span class='line'>521</span>  */</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setVariablesForImages</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">    </span><span class="NAME">setNextImage</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">    </span><span class="NAME">setPreviousImage</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>526</span> 
+<span class='line'>527</span> </span><span class="COMM">/**
+<span class='line'>528</span>  * In deze functie wordt de image die gezoomd wordt geset.
+<span class='line'>529</span>  * Eerst set hij de previous en next image.
+<span class='line'>530</span>  * Daarna creeërt hij de img element en set de attributes aan de img element, deze set hij door die van de image attribute te gebruiken.
+<span class='line'>531</span>  * Aan het einde set hij de maxHeight per image waarbij het ook liquid is.
+<span class='line'>532</span>  * @param image : de image die gezoomt moet worden.
+<span class='line'>533</span>  * @return {HTMLElement} : geeft de img html element terug  die gecreeërt is met de bijbehorende attributen.
+<span class='line'>534</span>  */</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setupImageZoom</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="WHIT">    </span><span class="NAME">setVariablesForImages</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>537</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">img</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createElement</span><span class="PUNC">(</span><span class="STRN">'img'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">    </span><span class="NAME">img.src</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.src</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>539</span> </span><span class="WHIT">    </span><span class="NAME">img.alt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.alt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="WHIT">    </span><span class="NAME">img.style.maxHeight</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">getSizeOriginalImage</span><span class="PUNC">(</span><span class="NAME">image.id</span><span class="PUNC">,</span><span class="STRN">'height'</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">'px'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">img</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>543</span> 
+<span class='line'>544</span> </span><span class="COMM">/**
+<span class='line'>545</span>  * Hier format je de date naar een string
+<span class='line'>546</span>  * Je haalt eerst de dag, daarna de maand en als laatsts de jaar op en zet dat bij elkaar in een string.
+<span class='line'>547</span>  * @param date : Is de date die je binnen krijgt van bv image.
+<span class='line'>548</span>  * @return {String} : De datum als een string.
+<span class='line'>549</span>  */</span><span class="WHIT">
+<span class='line'>550</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">formatDate</span><span class="PUNC">(</span><span class="NAME">date</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>551</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">date.getDate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">"-"</span><span class="PUNC">+</span><span class="PUNC">(</span><span class="NAME">date.getMonth</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">"-"</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">date.getFullYear</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>552</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>553</span> 
+<span class='line'>554</span> </span><span class="COMM">/**
+<span class='line'>555</span>  * Hier maak je eerst een popup div aan dmv de functie createPopup.
+<span class='line'>556</span>  * Daarna maak je een image aan en de bijbehorende informatie dmv de functie setupImageZoom en geeft de parameter image mee.
+<span class='line'>557</span>  * Dan maak je een textnode aan waar de photograaf en datum in staan.
+<span class='line'>558</span>  * Als eerst wordt de textnode toegevoegd aan de popupDiv zodat hij bovenaan staan, dan wordt de image toegevoegt aan de popupdiv.
+<span class='line'>559</span>  * En aan het einde wordt de popupDiv in de body gezet. De imageId wordt ook geupdate zodat je voor de overige functies die dit gebruiken doorgeeft op welke image hij gezoomed is.
+<span class='line'>560</span>  *
+<span class='line'>561</span>  * Hiervoor heb ik de javascript book 2edition geraadpleegd --> Creating Text Nodes blz 290.
+<span class='line'>562</span>  * @param image : De image die wordt meegegeven die ingezoomed moet worden.
+<span class='line'>563</span>  */</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">fillZoom</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">popupDiv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">createPopup</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">img</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">setupImageZoom</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">text</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createTextNode</span><span class="PUNC">(</span><span class="STRN">"Photographer: "</span><span class="PUNC">+</span><span class="NAME">image.photographer.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">", "</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"Date:"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">formatDate</span><span class="PUNC">(</span><span class="NAME">image.date</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>568</span> </span><span class="WHIT">    </span><span class="NAME">popupDiv.appendChild</span><span class="PUNC">(</span><span class="NAME">text</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>569</span> </span><span class="WHIT">    </span><span class="NAME">popupDiv.appendChild</span><span class="PUNC">(</span><span class="NAME">img</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>570</span> </span><span class="WHIT">    </span><span class="NAME">document.body.appendChild</span><span class="PUNC">(</span><span class="NAME">popupDiv</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>571</span> </span><span class="WHIT">    </span><span class="NAME">imageId</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">image.id</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>572</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>573</span> 
+<span class='line'>574</span> </span><span class="COMM">/**
+<span class='line'>575</span>  * In deze functie wordt de overlay gecreeërt. De overlay zorgt voor een zwarte transparante div/look.
+<span class='line'>576</span>  * Eerst wordt een element div gecreeërt met als id en classname overlay(voor de css stylesheet).
+<span class='line'>577</span>  * Dan wordt de overlay in de body gezet en deze blijft in de body zolang je ingezoomd bent, hij wordt pas verwijdert wanneer je uitzoomt.
+<span class='line'>578</span>  */</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createAndAddOverlay</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">overlay</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createElement</span><span class="PUNC">(</span><span class="STRN">"div"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="WHIT">    </span><span class="NAME">overlay.id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'overlay'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="WHIT">    </span><span class="NAME">overlay.className</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'overlay'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>583</span> </span><span class="WHIT">    </span><span class="NAME">document.body.appendChild</span><span class="PUNC">(</span><span class="NAME">overlay</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>585</span> 
+<span class='line'>586</span> </span><span class="COMM">/**
+<span class='line'>587</span>  * De zoomout methode zorgt voor de zoomout, hij verwijdert eerst de div element overlay en dan de popup div.
+<span class='line'>588</span>  * Ook wordt de zoomedIn variable op false gezet.
+<span class='line'>589</span>  */</span><span class="WHIT">
+<span class='line'>590</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">zoomOut</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>591</span> </span><span class="WHIT">    </span><span class="NAME">document.body.removeChild</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">'overlay'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>592</span> </span><span class="WHIT">    </span><span class="NAME">document.body.removeChild</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">'popup'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>593</span> </span><span class="WHIT">    </span><span class="NAME">zoomedIn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>594</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>595</span> 
+<span class='line'>596</span> </span><span class="COMM">/**
+<span class='line'>597</span>  * De zoomIn functie zet eerst de zoomedIn variable op true.
+<span class='line'>598</span>  * Daarna wordt de functie createAndAddOverlay aangeroept voor de overlay en daarna de fillZoom en geeft de parameter image mee(de image die ingezoomed moet worden)
+<span class='line'>599</span>  * De reden dat ik een zoomIn heb en een fillZoom functie is voor het feit wanneer je gewoon inzoomt en wanneer je een volgende of vorige foto wil bekijken.
+<span class='line'>600</span>  * Door fillzoom alleen te gebruiken wordt alleen de popupdiv verandert/ingevuld met bijbehorende img elemenet en textnode. deze functie wordt gebruikt voor de next en prev.
+<span class='line'>601</span>  * ZoomIn functie wordt gebruikt als je uitgezoomed bent en je wil inzoomen.
+<span class='line'>602</span>  * @param image : De image die wordt meegegeven die ingezoomed moet worden.
+<span class='line'>603</span>  */</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">zoomIn</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>605</span> </span><span class="WHIT">    </span><span class="NAME">zoomedIn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">    </span><span class="NAME">createAndAddOverlay</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>607</span> </span><span class="WHIT">    </span><span class="NAME">fillZoom</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>608</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>609</span> 
+<span class='line'>610</span> </span><span class="COMM">/**
+<span class='line'>611</span>  * Hier wordt de nextImage variable geset.
+<span class='line'>612</span>  * Eerst wordt er gekeken of er een div naast de div is waar de image in zit(de volgende div).
+<span class='line'>613</span>  * Zo ja wordt de nextImage de image in de next div.
+<span class='line'>614</span>  * Ander wordt er automatisch gekeken naar de eerste div in de container en wordt de nextImage de image in die div.
+<span class='line'>615</span>  * @param image : De huidige image waarvan je de nextImage wil weten.
+<span class='line'>616</span>  */</span><span class="WHIT">
+<span class='line'>617</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setNextImage</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">image.id</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">parentNode.nextSibling</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>619</span> </span><span class="WHIT">        </span><span class="NAME">nextImage</span><span class="PUNC">=</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">image.id</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">parentNode.nextSibling.firstChild</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">    </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">        </span><span class="NAME">nextImage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">'container'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">firstChild.firstChild</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>623</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>624</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>625</span> 
+<span class='line'>626</span> </span><span class="COMM">/**
+<span class='line'>627</span>  * Hier wordt de previousImage variable geset.
+<span class='line'>628</span>  * Eerst wordt er gekeken of er een div naast de div is waar de image in zit(de vorige div).
+<span class='line'>629</span>  * Zo ja wordt de previousImage de image in de previous div.
+<span class='line'>630</span>  * Ander wordt er automatisch gekeken naar de laatste div in de container en wordt de nextImage de image in die div.
+<span class='line'>631</span>  * @param image : De huidige image waarvan je de previousImage wil weten.
+<span class='line'>632</span>  */</span><span class="WHIT">
+<span class='line'>633</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setPreviousImage</span><span class="PUNC">(</span><span class="NAME">image</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>634</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">image.id</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">parentNode.previousSibling</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>635</span> </span><span class="WHIT">        </span><span class="NAME">previousImage</span><span class="PUNC">=</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">image.id</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">parentNode.previousSibling.firstChild</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>636</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>637</span> </span><span class="WHIT">    </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>638</span> </span><span class="WHIT">        </span><span class="NAME">previousImage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">'container'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">lastChild.firstChild</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>639</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>640</span> </span><span class="PUNC">}</span></pre></body></html>

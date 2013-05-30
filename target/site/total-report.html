@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Total coverage report</title>
+<style>
+    body {
+        margin: 0;
+        padding: 18px 10px;
+        font: 0.8125em Verdana, sans-serif;
+    }
+
+    h1 {
+        font-size: 1.2em;
+        margin: 0;
+        padding-left: 10px;
+        padding-bottom: 5px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    .stats {
+        width: 100%;
+    }
+
+    .stats-header th {
+        color: white;
+    }
+
+    .stats-header th {
+        text-align: right;
+    }
+
+    .stats-header th:first-child {
+        text-align: left;
+    }
+
+    .stats td.statements,
+    .stats td.executed,
+    .stats td.coverage {
+        text-align: right;
+    }
+
+    .stats > thead th,
+    .stats > thead td,
+    .stats > tbody > tr > td {
+        padding: 4px 10px;
+    }
+
+    .stats > thead th {
+        font-size: 0.85em;
+    }
+
+    .stats > thead > tr:first-child th {
+        background-color: #758691;
+    }
+
+    .stats > thead th:first-child,
+    .stats > thead td:first-child,
+    .stats > tbody > tr > td:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    .stats > thead th:last-child,
+    .stats > thead td:last-child,
+    .stats > tbody > tr > td:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    .stats > tbody > tr:nth-child(4n + 1) {
+        background-color: #e7e8e9;
+    }
+
+    .stats > tbody > tr:nth-child(2n + 1) {
+        cursor: pointer;
+    }
+
+    .stats > tbody > tr:nth-child(2n + 1):hover {
+        background-color: #b1c7d4;
+    }
+
+    .stats tr.no-statements {
+        opacity: 0.6;
+    }
+
+    a, a:hover, a:visited, a:active {
+        color: black;
+        text-decoration: none;
+    }
+
+    .bar-container {
+        padding: 2px;
+        padding-right: 8px;
+        width: 15%;
+    }
+
+    .bar {
+        background-color: #DDD;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+        height: 7px;
+        padding: 1px;
+        position: relative;
+        width: 100%;
+    }
+
+    .bar > span {
+        background-color: #AEDB4B;
+        border-radius: 6px 6px 6px 6px;
+        box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+        display: block;
+        height: 100%;
+    }
+
+    .bar > span:before {
+        position: absolute;
+        width: 25%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-right: 1px solid rgba(0,0,0,0.1);
+        content: ' ';
+    }
+    .bar > span:after {
+        position: absolute;
+        width: 25%;
+        height: 100%;
+        left: 50%;
+        top: 0;
+        border-left: 1px solid rgba(0,0,0,0.1);
+        border-right: 1px solid rgba(0,0,0,0.1);
+        content: ' ';
+    }
+
+    /* line by line coverage styles */
+
+    .line-coverage {
+        margin: 10px 0px;
+    }
+
+    .line-coverage th {
+        border-right: 1px solid #758691;
+    }
+
+    .line-coverage th div,
+    .line-coverage td div {
+        text-align: center;
+    }
+
+    .line-coverage th div {
+        margin: 0px 10px 0px 4px;
+    }
+
+    .line-coverage td div {
+        padding: 2px 6px 2px 4px;
+        margin: 0;
+    }
+
+    .line-coverage th,
+    .line-coverage td,
+    .line-coverage pre {
+        padding: 0;
+        margin: 0;
+
+        font-size: 1.05em;
+        font-weight: normal;
+        font-family: Courier New;
+    }
+
+    .line-coverage th div, 
+    .line-coverage td.times-executed div {
+        border-radius: 0 5px 5px 0;
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 0.9em;
+    }
+
+    .line-coverage td pre {
+        margin-left: 8px;
+    }
+
+    .line-coverage tr.covered td.times-executed div {
+        background-color: #aedb4b;
+    }
+
+    .line-coverage tr.not-covered td.times-executed div {
+        background-color: #ff8134;
+    }
+
+    .line-coverage span.keyword {
+        color: #000080;
+        font-weight: bold;
+    }
+
+    .line-coverage span.string {
+        color: #008000;
+    }
+
+    .line-coverage span.number {
+        color: #0000ff;
+    }
+
+    .line-coverage a {
+        color: black;
+    }
+
+    .line-coverage-cell > div {
+        color: #FF8134;
+    }
+
+    .line-coverage-cell > div > a {
+        color: #FF8134;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .stats > thead td {
+        font-weight: bold;
+    }
+
+    .footer {
+        padding-top: 5px;
+        text-align: right;
+        font-style: italic;
+        font-size: 0.85em;
+        opacity: 0.7;
+    }
+
+    .footer a {
+        text-decoration: underline;
+    }
+</style>
+<script type="text/javascript">
+    (function () {
+        var reservedKeywords = [
+            "break",
+            "case",
+            "catch",
+            "continue",
+            "debugger",
+            "default",
+            "delete",
+            "do",
+            "else",
+            "false",
+            "finally",
+            "for",
+            "function",
+            "if",
+            "in",
+            "instanceof",
+            "new",
+            "null",
+            "return",
+            "switch",
+            "this",
+            "true",
+            "throw",
+            "try",
+            "typeof",
+            "var",
+            "void",
+            "while",
+            "with"
+        ];
+
+        String.prototype.reverse = function () {
+            return this.split('').reverse().join('');
+        };
+
+        var reservedKeywordsPattern = new RegExp('\\b(' + reservedKeywords.join('|') + ')\\b', 'g');
+        var jsStringPattern = /('(?!\\').*'|"(?!\\").*")/g;
+        var jsNumberPattern = /\b(\d+(?:\.\d+)?)\b/g;
+
+        function el(type) {
+            return document.createElement(type);
+        }
+
+        function withText(node, text) {
+            node.innerHTML = text;
+            return node;
+        }
+
+        function maybeAppendMissedLines(id, frag, missed, data) {
+            if (missed.length === 0) {
+                return;
+            }
+
+            var rangeAnchors = [];
+            var range;
+
+            for (var i = 0, len = missed.length; i < len; i++) {
+                var start = missed[i];
+                var end = start;
+
+                range = [start];
+
+                for (var j = i + 1; j < len; j++) {
+                    var missedLineNr = missed[j];
+                    var consecutive = false;
+
+                    // consecutive missed lines
+                    if (missedLineNr === end + 1) {
+                        consecutive = true;
+                    } else {
+                        // let's check if all lines in between are not executable
+                        var dataIdx = end;
+
+                        while (dataIdx < missedLineNr) {
+                            if (data[dataIdx][0] > -1) {
+                                if (data[dataIdx][0] === 0) {
+                                    missedLineNr = dataIdx + 1;
+                                    consecutive = true;
+                                }
+
+                                break;
+                            }
+
+                            dataIdx++;
+                        }
+                    }
+
+                    if (consecutive) {
+                        end = missedLineNr;
+                        i = j;
+                    }
+                }
+
+                range[1] = end;
+
+                var rangeStr = start === end ? start : start + '-' + end;
+                rangeAnchors.push('<a href="' + '#' + id + '-' + start + '">' + rangeStr + '</a>');
+            }
+
+            frag.appendChild(withText(el('div'), 'Missed lines: ' + rangeAnchors.join(', ')));
+        }
+
+        function createSourceTable(id, dataEl) {
+            var d = document;
+
+            var data = eval(dataEl.innerHTML);
+            var td = dataEl.parentNode;
+            td.removeChild(dataEl);
+
+            var frag = d.createDocumentFragment();
+
+            var table = el('table');
+            table.className = 'line-coverage';
+
+            var missed = [];
+
+            for (var i = 0, len = data.length; i < len; i++) {
+                var tr = el('tr');
+                var record = data[i];
+
+                var timesExecuted = record[0];
+                var src = record[1];
+                var executable = timesExecuted > -1;
+                var lineNr = i + 1;
+
+                if (timesExecuted === 0) {
+                    missed.push(lineNr);
+                }
+
+                tr.className = !executable ? 'not-executable' : timesExecuted > 0 ? 'covered' : 'not-covered';
+                table.appendChild(tr);
+
+                var lineNrNode = el('th');
+
+                var anchor = el('a');
+                anchor.setAttribute('name', id + '-' + lineNr);
+                anchor.appendChild(withText(el('div'), lineNr));
+
+                lineNrNode.appendChild(anchor);
+                tr.appendChild(lineNrNode);
+
+                var timesExecutedNode = el('td');
+                timesExecutedNode.className = 'times-executed';
+                timesExecutedNode.appendChild(withText(el('div'), executable ? (timesExecuted || '!') : '&nbsp;'));
+                tr.appendChild(timesExecutedNode);
+
+                var srcNode = el('td');
+
+                var styledSrc = src
+                    .reverse().replace(jsStringPattern, '>naps/<$1>"gnirts"=ssalc naps<').reverse()
+                    .replace(jsNumberPattern, '<span class="number">$1</span>')
+                    .replace(reservedKeywordsPattern, '<span class="keyword">$1</span>');
+
+                srcNode.appendChild(withText(el('pre'), styledSrc));
+
+                tr.appendChild(srcNode);
+            }
+
+            maybeAppendMissedLines(id, frag, missed, data);
+            frag.appendChild(table);
+
+            td.appendChild(frag.cloneNode(true));
+        }
+
+        window.__coverage_toggleSection = function (hash) {
+            var d = document;
+            var id = hash.indexOf('-') > -1 ? hash.substring(0, hash.indexOf('-')) : hash;
+
+            var srcRow = d.getElementById('__src_' + id);
+            if (!srcRow) {
+                return;
+            }
+
+            var dataEl = d.getElementById('__data_' + id);
+
+            if (dataEl) {
+                createSourceTable(id, dataEl);
+            }
+
+            var show = srcRow.style.display === 'none';
+
+            if (show) {
+                srcRow.style.display = '';
+                window.location.hash = "#" + hash;
+            } else {
+                srcRow.style.display = 'none';
+                window.location.hash = '#closed';
+            }
+        }
+
+        window.onload = function () {
+            if (window.location.hash) {
+                __coverage_toggleSection(window.location.hash.substr(1));
+            }
+        };
+
+    })();
+</script>
+</head>
+<body>
+    <h1>Total coverage report</h1>
+    <table class="stats">
+        <thead>
+            <tr class="stats-header">
+                <th>File</th>
+                <th>Statements</th>
+                <th>Executed</th>
+                <th>Coverage</th>
+                <th></th>
+            </tr>
+            <tr class="stats-header ">
+                <td>Total</td>
+                <td class="statements">188</td>
+                <td class="executed">141</td>
+                <td class="coverage">
+                        75&thinsp;%
+                </td>
+                <td class="bar-container">
+                        <div class="bar">
+                            <span style="width: 75%; background-color: rgb(196, 219, 75);"></span>
+                        </div>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  onclick="__coverage_toggleSection('990a77f5e02fdf47409ad76b228a77d3'); return false;">
+                <td><a href="#">target/jasmine/src/<strong>gallery.js</strong></a></td>
+                <td class="statements">134</td>
+                <td class="executed">87</td>
+                <td class="coverage">
+                        64&thinsp;%
+                </td>
+                <td class="bar-container">
+                        <div class="bar">
+                            <span style="width: 64%; background-color: rgb(206, 219, 75);"></span>
+                        </div>
+                </td>
+            </tr>
+            <tr id="__src_990a77f5e02fdf47409ad76b228a77d3" style="display: none;">
+                <td class="line-coverage-cell" colspan="5"><p id="__data_990a77f5e02fdf47409ad76b228a77d3">[[-1,'\/**'],[-1,' * In deze array zitten alle foto\'s in (en alle bijbehoorende informatie).'],[-1,' * @type {Array}'],[-1,' *\/'],[1,'var album ='],[-1,'    ['],[-1,'        {'],[-1,'            url: \'images\/0006787.jpg\','],[-1,'            id: \'image1\','],[-1,'            alt: \'containers\','],[-1,'            landscape: false,'],[-1,'            photographer: \'Sander\','],[-1,'            date: new Date(\'9\/8\/1999\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004713.jpg\','],[-1,'            id: \'image2\','],[-1,'            alt: \'bike in amsterdam\','],[-1,'            landscape: false,'],[-1,'            photographer: \'Brian\','],[-1,'            date: new Date(\'12\/10\/2009\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004720.jpg\','],[-1,'            id: \'image3\','],[-1,'            alt: \'desert\','],[-1,'            landscape: false,'],[-1,'            photographer: \'Frits\','],[-1,'            date: new Date(\'1\/15\/1999\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004731.jpg\','],[-1,'            id: \'image4\','],[-1,'            alt: \'chineze man\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Sindy\','],[-1,'            date: new Date(\'7\/9\/2000\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004750.jpg\','],[-1,'            id: \'image5\','],[-1,'            alt: \'construction\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Almira\','],[-1,'            date: new Date(\'8\/15\/2013\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004755.jpg\','],[-1,'            id: \'image6\','],[-1,'            alt: \'family on beach\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Paul\','],[-1,'            date: new Date(\'6\/9\/2012\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004801.jpg\','],[-1,'            id: \'image7\','],[-1,'            alt: \'old woman\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Lieke\','],[-1,'            date: new Date(\'5\/1\/2003\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004802.jpg\','],[-1,'            id: \'image8\','],[-1,'            alt: \'Little boy\','],[-1,'            landscape: false,'],[-1,'            photographer: \'Tristan\','],[-1,'            date: new Date(\'11\/28\/2008\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004827.jpg\','],[-1,'            id: \'image9\','],[-1,'            alt: \'old couple with bikes\','],[-1,'            landscape: false,'],[-1,'            photographer: \'Roos\','],[-1,'            date: new Date(\'12\/20\/2006\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004853.jpg\','],[-1,'            id: \'image10\','],[-1,'            alt: \'bridge\','],[-1,'            landscape: false,'],[-1,'            photographer: \'Hans\','],[-1,'            date: new Date(\'10\/16\/2007\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004858.jpg\','],[-1,'            id: \'image11\','],[-1,'            alt: \'tale\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Elko\','],[-1,'            date: new Date(\'9\/14\/2013\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004860.jpg\','],[-1,'            id: \'image12\','],[-1,'            alt: \'beach\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Ben\','],[-1,'            date: new Date(\'8\/11\/2005\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004870.jpg\','],[-1,'            id: \'image13\','],[-1,'            alt: \'locomotive\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Adam\','],[-1,'            date: new Date(\'6\/18\/1989\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004874.jpg\','],[-1,'            id: \'image14\','],[-1,'            alt: \'walk in the park\','],[-1,'            landscape: false,'],[-1,'            photographer: \'Damian\','],[-1,'            date: new Date(\'5\/21\/1988\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004888.jpg\','],[-1,'            id: \'image15\','],[-1,'            alt: \'surgery\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Gils\','],[-1,'            date: new Date(\'11\/22\/1979\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004902.jpg\','],[-1,'            id: \'image16\','],[-1,'            alt: \'grandma and grandpa\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Lars\','],[-1,'            date: new Date(\'10\/23\/1995\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004931.jpg\','],[-1,'            id: \'image17\','],[-1,'            alt: \'london bridge\','],[-1,'            landscape: true,'],[-1,'            photographer: \'veronica\','],[-1,'            date: new Date(\'9\/29\/1992\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004969.jpg\','],[-1,'            id: \'image18\','],[-1,'            alt: \'satalite\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Ken\','],[-1,'            date: new Date(\'7\/27\/1996\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004971.jpg\','],[-1,'            id: \'image19\','],[-1,'            alt: \'water\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Manuel\','],[-1,'            date: new Date(\'1\/19\/1993\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0006598.jpg\','],[-1,'            id: \'image20\','],[-1,'            alt: \'church\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Chris\','],[-1,'            date: new Date(\'7\/17\/1991\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0006630.jpg\','],[-1,'            id: \'image21\','],[-1,'            alt: \'Great summer\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Micky\','],[-1,'            date: new Date(\'6\/8\/1990\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0006638.jpg\','],[-1,'            id: \'image22\','],[-1,'            alt: \'castle\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Rachel\','],[-1,'            date: new Date(\'5\/3\/1998\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0006680.jpg\','],[-1,'            id: \'image23\','],[-1,'            alt: \'red sand\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Pipo\','],[-1,'            date: new Date(\'6\/13\/1987\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0006743.jpg\','],[-1,'            id: \'image24\','],[-1,'            alt: \'jail\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Melisa\','],[-1,'            date: new Date(\'1\/26\/2023\')'],[-1,'        },'],[-1,'        {'],[-1,'            url: \'images\/0004681.jpg\','],[-1,'            id: \'image25\','],[-1,'            alt: \'shadow palm tree\','],[-1,'            landscape: true,'],[-1,'            photographer: \'Tim\','],[-1,'            date: new Date(\'12\/3\/2010\')'],[-1,'        }'],[-1,'    ];'],[-1,'\/**'],[-1,' * Het aantal foto\'s\/divs in de container.'],[-1,' * @type {Number}'],[-1,' *\/'],[1,'var numberOfImages = album.length;'],[-1,'\/**'],[-1,' *  Maximale breedte van een div'],[-1,' * @type {Number}'],[-1,' *\/'],[1,'var MAX_WIDTH = 100;'],[-1,'\/**'],[-1,' * Rechter muis klik code.'],[-1,' * @type {Number}'],[-1,' *\/'],[1,'var RIGHT_CLICK = 3;'],[-1,'\/**'],[-1,' * Linker muis klik code.'],[-1,' * @type {Number}'],[-1,' *\/'],[1,'var LEFT_CLICK = 1;'],[-1,'\/**'],[-1,' * Spatie keycode.'],[-1,' * @type {Number}'],[-1,' *\/'],[1,'var SPACE_KEY = 32 ;'],[-1,'\/**'],[-1,' * Linker pijltje keycode.'],[-1,' * @type {Number}'],[-1,' *\/'],[1,'var LEFTARROW_KEY = 37;'],[-1,'\/**'],[-1,' * Rechter pijltje keycode.'],[-1,' * @type {Number}'],[-1,' *\/'],[1,'var RIGHTARROW_KEY = 39;'],[-1,'\/**'],[-1,' * Geeft boolean of hij ingezoomed is of niet\/'],[-1,' * @type {Boolean}'],[-1,' *\/'],[1,'var zoomedIn = false;'],[-1,'\/**'],[-1,' * Geeft de id weer van het huidige image waar je op hebt geklikt of gezoomt op hebt.'],[-1,' * @type {String}'],[-1,' *\/'],[1,'var imageId = album[0].id;'],[-1,'\/**'],[-1,' * De volgende image.'],[-1,' *\/'],[1,'var nextImage;'],[-1,'\/**'],[-1,' * De vorige image.'],[-1,' *\/'],[1,'var previousImage;'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt de oncontext menu default uitgezet door een false boolean te returnen.'],[-1,' *'],[-1,' * @return {Boolean} false zodat de default waarde op false word gezet.'],[-1,' *\/'],[1,'document.oncontextmenu= function(){return false;};'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt nadat je een key indrukt een functie KeyDownZoom opgeroepen en uitgevoerd.'],[-1,' *'],[-1,' * Hiervoor heb ik het javascriptboek 2editie geraadpleegd: the Dom Event object blz: 375'],[-1,' * @param e : Het event dat wordt meegegeven.'],[-1,' *\/'],[1,'document.onkeydown= function(e){ keyDownZoom(e);};'],[-1,''],[-1,'\/**'],[-1,' * Deze functie is bedoelt om een pagina te vullen met alle images.'],[-1,' * Eerst wordt een container gemaakt en in de body gezet.'],[-1,' * Daarna word de functie createGallery opgeroepen waarbij je de container mee geeft en de maximale breedte van een div.'],[-1,' *\/'],[1,'function fillPage(){'],[5,'    var container = createAndAddContainer();'],[5,'    var widthDiv = setWidthDiv();'],[5,'    createGallery(widthDiv, container);'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt berekend hoe de grid\/widt moet zijn van de divs.'],[-1,' * Ik heb voor deze berekening gekozen omdat:'],[-1,' * - Je een liquid div maakt en je makkelijk de breedte kan berekenen naarmaten je div\'s verwijdert.'],[-1,' * De breedte van de div\'s zijn in procenten.'],[-1,' * De berekenening: eerst wordt de wortel getrokken van het aantal foto\'s\/divs die je hebt.'],[-1,' *                  daarna wordt dat cijfer naar boven afgerond.'],[-1,' *                  En als laatst wordt de 100 (max_width) gedeeldt door en afgronde cijfer.'],[-1,' * @return {String}: Geeft het aantal procent terug dat een div width moet hebben.'],[-1,' *\/'],[1,'function setWidthDiv(){'],[7,'    return (MAX_WIDTH\/(Math.ceil(Math.sqrt(numberOfImages))))+\'%\';'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt de gallarij gecree\u00EBrt.'],[-1,' * Er wordt een loop gemaakt voor het aantal foto\'s die er zijn en wordt in de container gevuld.'],[-1,' * Eerst wordt er een div gemaakt waar je de div.width in set zodat het mooi gerasterd zal worden.'],[-1,' * Dan wordt er een image gecree\u00EBrt door de functie createImage waarbij je de image meegeeft.'],[-1,' * Daarna zet je de image in de div en de div in de container.'],[-1,' * @param widthDiv : De breedte dat elk div moet hebben.'],[-1,' * @param container : De container waar je de div\'s (met de images erin) in zet.'],[-1,' *\/'],[1,'function createGallery(widthDiv, container) {'],[6,'    for (var i = 0; i &lt; numberOfImages; i++) {'],[150,'        var div = document.createElement(\'div\');'],[150,'        div.style.width = widthDiv;'],[150,'        var img = createImage(album[i]);'],[150,'        div.appendChild(img);'],[150,'        container.appendChild(div);'],[-1,'    }'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt een container gecree\u00EBrt en in de body gezet.'],[-1,' * Eerst wordt een element div gemaakt met als id container.'],[-1,' * Hij zet de container in de body en returnt deze zodat indien je er meerdere wil maken dit mogenlijk is.'],[-1,' * @return {HTMLElement} : Geeft een div html element terug met als id container.'],[-1,' *\/'],[1,'function createAndAddContainer() {'],[7,'    var container = document.createElement(\'div\');'],[7,'    container.id = \'container\';'],[7,'    document.body.appendChild(container);'],[7,'    return container;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt een image(img) element gecree\u00EBrt nadat je als parameter een image meegeeft.'],[-1,' * Als eerst wordt er een element gecree\u00EBrt voor de foto\/image.'],[-1,' * Daarna worden de waardes\/attributes geset voor het element(de url wordt de src, en hij neem de id, date en photopgrapher over)'],[-1,' * Wanneer je op een image klik wordt er een event opgeroepen en daarin de functie mouseDown.'],[-1,' * Voor de functie mouseDown geeft je de event door en de image zelf(this).'],[-1,' * De reden dat ik de onmousedown hier heb bijgezet is omdat de functie alleen mag worden opgeroepen voor de image.'],[-1,' * @param image : De image die je meegeeft uit de album.'],[-1,' * @return {HTMLElement}: Geeft een img html element terug met de bijbehorende attributes.'],[-1,' *\/'],[1,'function createImage(image){'],[150,'    var img = document.createElement(\'img\');'],[150,'    img.src = image.url;'],[150,'    img.id = image.id;'],[150,'    img.alt = image.alt;'],[150,'    img.date = image.date;'],[150,'    img.photographer = image.photographer;'],[150,'    img.onmousedown= function (e){mouseDown(e, this);};'],[150,'    return img;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Set de width van alle divs die in de container zitten.'],[-1,' * Eerst wordt de numberOfImages geset, hierbij wordt het aantal div\'s in de container berekend en meegegeven.'],[-1,' * Daarna komt er een loop voor het aantal images\/divs in de container en wordt voor elke child element de width geset.'],[-1,' * Ik heb hiervoor gekozen omdat dit uitgevoert moet worden nadat er een foto of foto\'s worden verwijdert.'],[-1,' * Dit is ook makkelijk te herbruiken in het geval je de raster wil veranderen.'],[-1,' *'],[-1,' * Hiervoor heb ik de javascript book 2edition geraadpleegd --&gt; Node Relationships blz 264.'],[-1,' * @param container : De container waar alle div\'s zitten (met de images erin).'],[-1,' *\/'],[1,'function setWidthDivs(container) {'],[0,'    numberOfImages = container.childElementCount;'],[0,'    for (var i = 0; i &lt; numberOfImages; i++) {'],[0,'        container.childNodes.item(i).style.width = setWidthDiv();'],[-1,'    }'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Met deze functie kun je een image verwijderen uit de photoviewer(container).'],[-1,' * Eerst wordt de next image geset in het geval je op de spatie drukt om de image in te zoomen,'],[-1,' * de zoom gaat op deze manier meteen naar de volgende foto. De nextimage en previous (door de functie setVariablesForImages) van de image wordt als eerst geset omdat erna de image wordt verwijdert uit de container.'],[-1,' * Daarna wordt een variable aangemaakt om de div van de image die je hebt meegegeven in te zetten.'],[-1,' * Dan wordt een variable aangemaakt voor de container (deze wordt opgehaald en opgeslagen in de container).'],[-1,' * Daarna wordt de div uit de container verwijdert.'],[-1,' * De imageId wordt geset naar de nextImage.id (omdat image niet meer bestaat in de container) in het geval er op een spatie wordt gedrukt om een image in te zoomen.'],[-1,' * @param image : De image die verwijdert moet worden uit de container.'],[-1,' * @return {HTMLElement} : De container nadat de image is verwijdert.'],[-1,' *\/'],[1,'function removeDivFromContainer(image) {'],[0,'    setVariablesForImages(image);'],[0,'    var div = document.getElementById(image.id).parentNode;'],[0,'    var container = document.getElementById(\'container\');'],[0,'    container.removeChild(div);'],[0,'    imageId = nextImage.id;'],[0,'    return container;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De functie mouseDown geeft weer wat er moet gebeuren nadat je op de muis klikt.'],[-1,' * Eerst wordt de default verwijdert zodat je hier geen last van hebt in de browsers.'],[-1,' * Daarna wordt er gekeken of het event property gelijk is aan de rechter muisklik code.'],[-1,' * In het geval dit zo is wordt de image die meeggeven is verwijdert en een nieuwe container gemaakt.'],[-1,' * Dan wordt de with van alle divs geset van de container.'],[-1,' * In het geval de event property gelijk is aan de linker muisklik wordt de functie zoomIn opgeroepen en de parameter image wordt meegegeven.'],[-1,' * @param e : Het event dat wordt meegegeven.'],[-1,' * @param image : De image die wordt meegegeven.'],[-1,' *\/'],[1,'function mouseDown(e, image) {'],[0,'    deleteDefault(e);'],[0,'    if (e.which === RIGHT_CLICK) {'],[0,'        var container = removeDivFromContainer(image);'],[0,'        setWidthDivs(container);'],[-1,'    }'],[0,'    else if(e.which === LEFT_CLICK){'],[0,'        zoomIn(image);'],[-1,'    }'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier verwijder je de default van een event.'],[-1,' *'],[-1,' * Hiervoor heb ik de javascript book 2edition geraadpleegd --&gt; Cross-Browser Event object blz 381.'],[-1,' * @param e : Het event dat wordt meegegven.'],[-1,' *\/'],[1,'function deleteDefault(e) {'],[0,'    e.preventDefault();'],[-1,'   \/\/event.returnValue = false;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De functie spaceKey is in het geval je op de spatie drukt.'],[-1,' * Wanneer de event property gelijk is aan de keycode van de spatie wordt er eerst gekeken of hij al in zoom mood is.'],[-1,' * Indien de foto niet is ingezoomed voert hij de zoomIn functie en geeft de image van de elementbyid imageId mee'],[-1,' * Wanneer een foto niet is ingezoomed voert hij de zoomUit functie.'],[-1,' * @param e : De event die wordt meegegeven.'],[-1,' *\/'],[1,'function spaceKey(e) {'],[0,'    if (e.keyCode === SPACE_KEY) {'],[0,'        if (zoomedIn === false) {'],[0,'            zoomIn(document.getElementById(imageId));'],[-1,'        }'],[-1,'        else {'],[0,'            zoomOut();'],[-1,'        }'],[-1,'    }'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De functie rightArrowKey is in het geval je de rechter pijl drukt om de volgende image te zien.'],[-1,' * Wanneer de event property gelijk is aan de keycode van de rechterpijl wordt er eerst gekeken of hij al in de zoom mode is.'],[-1,' * Dit om veilig te zijn zodat hij het alleen uitvoert in de zoom mode.'],[-1,' * Daarna wordt eerst de popup verwijdert, om de oude image te verwijderen en de nieuwe in te zetten, dit gebeurt door filmZoom met als meegegeven parameter nextImage (een image).'],[-1,' * @param e : De event die wordt meegegeven.'],[-1,' *\/'],[1,'function rightArrowKey(e) {'],[0,'    if (e.keyCode === RIGHTARROW_KEY) {'],[0,'        if (zoomedIn === true) {'],[0,'            document.body.removeChild(document.getElementById(\'popup\'));'],[0,'            fillZoom(nextImage);'],[-1,'        }'],[-1,'    }'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De functie leftArrowKey is in het geval je de linker pijl drukt om de vorige image te zien.'],[-1,' * Wanneer de event property gelijk is aan de keycode van de linkerpijl wordt er eerst gekeken of hij al in de zoom mode is.'],[-1,' * Dit om veilig te zijn zodat hij het alleen uitvoert in de zoom mode.'],[-1,' * Daarna wordt eerst de popup verwijdert,om  de oude image te verwijderen en de nieuwe in te zetten, dit gebeurt door filmZoom met als meegegeven parameter previousImage (een image).'],[-1,' * @param e : De event die wordt meegegeven.'],[-1,' *\/'],[1,'function leftArrowKey(e) {'],[0,'    if (e.keyCode === LEFTARROW_KEY) {'],[0,'        if (zoomedIn === true) {'],[0,'            document.body.removeChild(document.getElementById(\'popup\'));'],[0,'            fillZoom(previousImage);'],[-1,'        }'],[-1,'    }'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier is de functie keyDownZoom die wordt opgeroepen tijdens het onkeydown event.'],[-1,' * Hij reset eerst de default waardes. Daarna kijkt hij welke key wordt uitgevoert en indien dit zo is wordt de functie ook echt uitgevoert.'],[-1,' * @param e'],[-1,' *\/'],[1,'function keyDownZoom(e){'],[0,'    deleteDefault(e);'],[0,'    spaceKey(e);'],[0,'    rightArrowKey(e);'],[0,'    leftArrowKey(e);'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De createPopup is een functie die een popup div cree\u00EBrt en dit returnt. Deze functie is vaker te gebruiken vooral als je naar een volgende of vorige foto wil.'],[-1,' * Eerst wordt er een element gecree\u00EBrt met de id en classname(voor de stylesheet) popup.'],[-1,' * Aan deze popup wordt er een onclick event toegevoegt, dit in het geval je uit wil zoomen. Daarom wordt er voor dit event de functie zoomOut ook opgeroepen.'],[-1,' * @return {HTMLElement}  : Geeft een div html element terug met als id popup.'],[-1,' *\/'],[1,'function createPopup() {'],[1,'    var popupDiv = document.createElement(\'div\');'],[1,'    popupDiv.className = \'popup\';'],[1,'    popupDiv.id = \'popup\';'],[1,'    popupDiv.onclick = function (e) { zoomOut(e);};'],[1,'    return popupDiv;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De functie getSizeOriginalImage is in het geval je de width en\/of height wil hebben van de originele image uit de album.'],[-1,' * Je kunt ook meerde attributes krijgen van een orginele image.'],[-1,' * Ik heb deze functie gemaakt omdat het makkelijk is om informatie\/attributes te krijgen van de image, je kunt hier makkelijk de photograaf, date, url etc.'],[-1,' * @param imageId : De image id van de image waar je de waardes van wil'],[-1,' * @param input : Height of width maar je kunt hiervoor meerdere attributes van een image krijgen. Het is een string voor het geval je een attribut wil ophalen.'],[-1,' * @return {*} : De return waarde hangt af van de input ( de waarde die je opvraagt).'],[-1,' *\/'],[1,'function getSizeOriginalImage(imageId, input){'],[2,'    var imageAttribute;'],[2,'    for(var i = 0; i &lt; numberOfImages; i++) {'],[50,'        if(album[i].id == imageId){'],[2,'            imageAttribute = album[i].input;'],[-1,'        }'],[-1,'    }'],[2,'    return imageAttribute;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier is een functie waarbij je zowel de previous als de next image gelijk set.'],[-1,' * @param image : De image die wordt meegeven waarbij je de volgende en vorige foto voor moet setten.'],[-1,' *\/'],[1,'function setVariablesForImages(image) {'],[1,'    setNextImage(image);'],[1,'    setPreviousImage(image);'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * In deze functie wordt de image die gezoomd wordt geset.'],[-1,' * Eerst set hij de previous en next image.'],[-1,' * Daarna cree\u00EBrt hij de img element en set de attributes aan de img element, deze set hij door die van de image attribute te gebruiken.'],[-1,' * Aan het einde set hij de maxHeight per image waarbij het ook liquid is.'],[-1,' * @param image : de image die gezoomt moet worden.'],[-1,' * @return {HTMLElement} : geeft de img html element terug  die gecree\u00EBrt is met de bijbehorende attributen.'],[-1,' *\/'],[1,'function setupImageZoom(image) {'],[1,'    setVariablesForImages(image);'],[1,'    var img = document.createElement(\'img\');'],[1,'    img.src = image.src;'],[1,'    img.alt = image.alt;'],[1,'    img.style.maxHeight = getSizeOriginalImage(image.id,\'height\')+\'px\';'],[1,'    return img;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier format je de date naar een string'],[-1,' * Je haalt eerst de dag, daarna de maand en als laatsts de jaar op en zet dat bij elkaar in een string.'],[-1,' * @param date : Is de date die je binnen krijgt van bv image.'],[-1,' * @return {String} : De datum als een string.'],[-1,' *\/'],[1,'function formatDate(date){'],[1,'    return date.getDate()+\&quot;-\&quot;+(date.getMonth()+1)+\&quot;-\&quot;+ date.getFullYear();'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier maak je eerst een popup div aan dmv de functie createPopup.'],[-1,' * Daarna maak je een image aan en de bijbehorende informatie dmv de functie setupImageZoom en geeft de parameter image mee.'],[-1,' * Dan maak je een textnode aan waar de photograaf en datum in staan.'],[-1,' * Als eerst wordt de textnode toegevoegd aan de popupDiv zodat hij bovenaan staan, dan wordt de image toegevoegt aan de popupdiv.'],[-1,' * En aan het einde wordt de popupDiv in de body gezet. De imageId wordt ook geupdate zodat je voor de overige functies die dit gebruiken doorgeeft op welke image hij gezoomed is.'],[-1,' *'],[-1,' * Hiervoor heb ik de javascript book 2edition geraadpleegd --&gt; Creating Text Nodes blz 290.'],[-1,' * @param image : De image die wordt meegegeven die ingezoomed moet worden.'],[-1,' *\/'],[1,'function fillZoom(image){'],[0,'    var popupDiv = createPopup();'],[0,'    var img = setupImageZoom(image);'],[0,'    var text = document.createTextNode(\&quot;Photographer: \&quot;+image.photographer.toString()+\&quot;, \&quot;+ \&quot;Date:\&quot; + formatDate(image.date));'],[0,'    popupDiv.appendChild(text);'],[0,'    popupDiv.appendChild(img);'],[0,'    document.body.appendChild(popupDiv);'],[0,'    imageId = image.id;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * In deze functie wordt de overlay gecree\u00EBrt. De overlay zorgt voor een zwarte transparante div\/look.'],[-1,' * Eerst wordt een element div gecree\u00EBrt met als id en classname overlay(voor de css stylesheet).'],[-1,' * Dan wordt de overlay in de body gezet en deze blijft in de body zolang je ingezoomd bent, hij wordt pas verwijdert wanneer je uitzoomt.'],[-1,' *\/'],[1,'function createAndAddOverlay(){'],[1,'    var overlay = document.createElement(\&quot;div\&quot;);'],[1,'    overlay.id = \'overlay\';'],[1,'    overlay.className= \'overlay\';'],[1,'    document.body.appendChild(overlay);'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De zoomout methode zorgt voor de zoomout, hij verwijdert eerst de div element overlay en dan de popup div.'],[-1,' * Ook wordt de zoomedIn variable op false gezet.'],[-1,' *\/'],[1,'function zoomOut() {'],[0,'    document.body.removeChild(document.getElementById(\'overlay\'));'],[0,'    document.body.removeChild(document.getElementById(\'popup\'));'],[0,'    zoomedIn = false;'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * De zoomIn functie zet eerst de zoomedIn variable op true.'],[-1,' * Daarna wordt de functie createAndAddOverlay aangeroept voor de overlay en daarna de fillZoom en geeft de parameter image mee(de image die ingezoomed moet worden)'],[-1,' * De reden dat ik een zoomIn heb en een fillZoom functie is voor het feit wanneer je gewoon inzoomt en wanneer je een volgende of vorige foto wil bekijken.'],[-1,' * Door fillzoom alleen te gebruiken wordt alleen de popupdiv verandert\/ingevuld met bijbehorende img elemenet en textnode. deze functie wordt gebruikt voor de next en prev.'],[-1,' * ZoomIn functie wordt gebruikt als je uitgezoomed bent en je wil inzoomen.'],[-1,' * @param image : De image die wordt meegegeven die ingezoomed moet worden.'],[-1,' *\/'],[1,'function zoomIn(image) {'],[0,'    zoomedIn = true;'],[0,'    createAndAddOverlay();'],[0,'    fillZoom(image);'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt de nextImage variable geset.'],[-1,' * Eerst wordt er gekeken of er een div naast de div is waar de image in zit(de volgende div).'],[-1,' * Zo ja wordt de nextImage de image in de next div.'],[-1,' * Ander wordt er automatisch gekeken naar de eerste div in de container en wordt de nextImage de image in die div.'],[-1,' * @param image : De huidige image waarvan je de nextImage wil weten.'],[-1,' *\/'],[1,'function setNextImage(image) {'],[2,'    if(document.getElementById(image.id).parentNode.nextSibling !== null){'],[2,'        nextImage=document.getElementById(image.id).parentNode.nextSibling.firstChild;'],[-1,'    }'],[-1,'    else{'],[0,'        nextImage = document.getElementById(\'container\').firstChild.firstChild;'],[-1,'    }'],[-1,'}'],[-1,''],[-1,'\/**'],[-1,' * Hier wordt de previousImage variable geset.'],[-1,' * Eerst wordt er gekeken of er een div naast de div is waar de image in zit(de vorige div).'],[-1,' * Zo ja wordt de previousImage de image in de previous div.'],[-1,' * Ander wordt er automatisch gekeken naar de laatste div in de container en wordt de nextImage de image in die div.'],[-1,' * @param image : De huidige image waarvan je de previousImage wil weten.'],[-1,' *\/'],[1,'function setPreviousImage(image) {'],[2,'    if(document.getElementById(image.id).parentNode.previousSibling !== null){'],[2,'        previousImage=document.getElementById(image.id).parentNode.previousSibling.firstChild;'],[-1,'    }'],[-1,'    else{'],[0,'        previousImage = document.getElementById(\'container\').lastChild.firstChild;'],[-1,'    }'],[-1,'}']]</p></td>
+            </tr><tr  onclick="__coverage_toggleSection('1ba4a11305efa4ae96cd8b31fbfd4b2d'); return false;">
+                <td><a href="#">target/jasmine/spec/<strong>galleryTest.js</strong></a></td>
+                <td class="statements">54</td>
+                <td class="executed">54</td>
+                <td class="coverage">
+                        100&thinsp;%
+                </td>
+                <td class="bar-container">
+                        <div class="bar">
+                            <span style="width: 100%; background-color: rgb(174, 219, 75);"></span>
+                        </div>
+                </td>
+            </tr>
+            <tr id="__src_1ba4a11305efa4ae96cd8b31fbfd4b2d" style="display: none;">
+                <td class="line-coverage-cell" colspan="5"><p id="__data_1ba4a11305efa4ae96cd8b31fbfd4b2d">[[1,'describe(\'The fillPage function\', function(){'],[1,'    it(\'schould create an container\',function(){'],[1,'        var expected = createAndAddContainer();'],[1,'        expect(document.getElementById(\'container\')).toNotBe(null);'],[-1,'    });'],[-1,''],[1,'    it(\'should create de width for the divs\', function(){'],[1,'        var expected = \'20%\';'],[1,'        expect(setWidthDiv()).toEqual(expected);'],[-1,'    });'],[-1,''],[1,'    it(\'should create 25 divs and put in the container\', function(){'],[1,'        var widthDiv = setWidthDiv();'],[1,'        var container = createAndAddContainer();'],[1,'        createGallery(widthDiv,container);'],[1,'        var expected = 25;'],[1,'        var result = container.getElementsByTagName(\'div\').length;'],[1,'        expect(result).toBe(expected)'],[-1,'    });'],[-1,''],[1,'    it(\'should have element img with id image16 in div\', function(){'],[1,'        fillPage();'],[1,'        var result = document.getElementById(\'image16\');'],[1,'        expect(result).toNotBe(null);'],[-1,'    });'],[-1,'});'],[-1,''],[1,'describe(\'The createPopup functions\',function(){'],[1,'    it(\'should create a div named popup\',function(){'],[1,'        var popup = createPopup();'],[1,'        expect(popup).toNotBe(null);'],[-1,'    });'],[-1,'});'],[-1,''],[1,'describe(\'The getSizeOriginalImage functions\',function(){'],[1,'    it(\'should give a size height or width\',function(){'],[1,'        var result = getSizeOriginalImage(\'image1\',\'height\');'],[1,'        var expected = album[0].height'],[1,'        expect(result).toEqual(expected)'],[-1,'    });'],[-1,'});'],[-1,''],[1,'describe(\'The getNextImage and getPreviousImage functions\',function(){'],[1,'    it(\'should have nextImage\',function(){'],[1,'        fillPage();'],[1,'        var image = document.getElementById(\'image2\');'],[1,'        setNextImage(image);'],[1,'        expect(nextImage).toEqual(document.getElementById(\'image3\'));'],[-1,'    });'],[-1,''],[1,'    it(\'should have previousImage\',function(){'],[1,'        fillPage();'],[1,'        var image = document.getElementById(\'image16\');'],[1,'        setPreviousImage(image);'],[1,'        expect(previousImage).toEqual(document.getElementById(\'image15\'));'],[-1,'    });'],[-1,'});'],[-1,''],[1,'describe(\'The createAndaddOverlay functions\',function(){'],[1,'    it(\'should create div overlay\',function(){'],[1,'        fillPage();'],[1,'        createAndAddOverlay();'],[1,'        expect(document.getElementById(\'overlay\')).toNotBe(null);'],[-1,'    });'],[-1,'});'],[-1,''],[1,'describe(\'The setupImageZoom functions\',function(){'],[1,'    it(\'should set up image zoomed and return\',function(){'],[1,'        fillPage();'],[1,'        var image = document.getElementById(\'image15\');'],[1,'        var result = setupImageZoom(image);'],[1,'        expect(result).toNotBe(null);'],[-1,'    });'],[-1,'});'],[-1,''],[1,'describe(\'The formatDate functions\',function(){'],[1,'    it(\'should convert date to string\',function(){'],[1,'        var date = new Date(\'9\/8\/1991\')'],[1,'        var result= formatDate(date);'],[1,'        expect(result).toEqual(\&quot;8-9-1991\&quot;);'],[-1,'    });'],[-1,'});']]</p></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="footer">Generated using <a href="http://timurstrekalov.github.com/saga/">Saga</a> version 1.1.0</div>
+</body>
+</html>
